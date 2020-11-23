@@ -369,23 +369,26 @@ export default {
         if (!this.isShowAllMonth) {
           this.currentMoment = moment(this.currentMoment).add(7, 'days')
           this.initWeekFun()
+          this.$emit('input', moment(this.currentMoment).format("YYYY-MM-DD"))
         } else {
           this.currentMoment = moment(this.currentMoment).add(1, 'month')
           this.initMonthFun()
+          this.currentMoment = moment(this.currentMoment).date(1)
+          this.$emit('input', this.currentMoment.format("YYYY-MM-DD"))
         }
       } else if (e === 1) {
         if (!this.isShowAllMonth) {
           this.currentMoment = moment(this.currentMoment).subtract(7, 'days')
           this.initWeekFun()
+          this.$emit('input', moment(this.currentMoment).format("YYYY-MM-DD"))
         } else {
           this.currentMoment = moment(this.currentMoment).subtract(1, 'month')
           this.initMonthFun()
+          this.currentMoment = moment(this.currentMoment).date(1)
+          this.$emit('input', moment(this.currentMoment).format("YYYY-MM-DD"))
         }
       }
       this.$refs.customSwiper.setPage(2)
-      if (this.isShowAllMonth) {
-        this.$emit('monthChange', this.currentMoment)
-      }
     },
     onTouchstart(e) {
       if (this.type === 'week') {

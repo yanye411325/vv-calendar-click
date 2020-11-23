@@ -46,7 +46,8 @@ export default {
       // 月切换 当月取当前日期
       // const nowMonth = moment().format('YYYY年MM月')
       const emitMonth = moment(currentMoment).format('YYYY年MM月')
-      // console.log(emitMonth)
+      console.log(emitMonth)
+      console.log(currentMoment)
     }
   }
 };
