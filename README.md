@@ -23,7 +23,7 @@ npm install vv-calendar-click -s
 
 ```javascript
 import Vue from "vue";
-import Calendar from "vv-calendar";
+import Calendar from "vv-calendar-click";
 Vue.use(Calendar);
 ```
 
