@@ -6,7 +6,7 @@
 
 ## install
 
-npm install vv-calendar -s
+npm install vv-calendar-click -s
 
 ## how to use
 
@@ -39,10 +39,7 @@ Vue.use(Calendar);
     return {
       selectedDate: new Date(),
       calendarConfigDayData: [
-        { date: 1586706786234, numberCount: 3 },
-        { date: 1585842786000, numberCount: 1 },
-        { date: 1586361186000, numberCount: 2 },
-        { date: 1586351186000, numberCount: 216 }
+        { date: 1586706786234, numberCount: 3 }
       ],
     };
   },
