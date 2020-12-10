@@ -1,7 +1,7 @@
 <template>
   <div ref="calendarPage" class="calendar-page" @touchmove.prevent>
     <div class="title">
-      {{ title }}
+      {{ title }} <span class="title-des">(左右滑动可切换)</span>
     </div>
     <div class="week">
       <div v-for="(item, index) in week" :key="index" class="week-item">
@@ -484,7 +484,7 @@ export default {
     }
   }
   .arrow-up{
-    border-bottom: 6px solid #666666;
+    border-bottom: 6px solid #999999;
     .white-mask{
       top: -4px;
       border-bottom: 6px solid #ffffff;
@@ -492,12 +492,21 @@ export default {
   }
   .arrow-down{
     top: 9px;
-    border-top: 6px solid #666666;
+    border-top: 6px solid #999999;
     .white-mask{
       top: -8px;
       border-top: 6px solid #ffffff;
     }
   }
 }
-
+.title{
+  font-size: 16px;
+  color: #333;
+  font-weight: 700;
+  .title-des{
+    font-weight: 400;
+    font-size: 12px;
+    color: #999999;
+  }
+}
 </style>

@@ -11,6 +11,7 @@
   }
 .calendar-page  .week {
     margin-top: 15px;
+    margin-bottom: 10px;
     display: flex;
     flex: 1;
   }
@@ -18,7 +19,7 @@
     display: flex;
     flex: 1;
     font-size: 14px;
-    color: #777777;
+    color: #999999;
     justify-content: center;
     align-items: center;
     background: #ffffff;
@@ -49,6 +50,7 @@
     width: 33px;
     height: 33px;
     color: #333333;
+    font-weight: 700;
     border-radius: 50%;
     background: #ffffff;
     display: flex;
@@ -145,9 +147,10 @@
     line-height: 40px;
     margin-right: 6px;
   }
-.calendar-page  .disable {
+.calendar-page .line-week-item  .disable {
     font-size: 14px;
-    color: #9e9e9e !important;
+    font-weight: 400;
+    color: #999999;
   }
 
 
