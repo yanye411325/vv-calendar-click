@@ -1,4 +1,4 @@
-# vv-calendar
+# vv-calendar-click
 
 > 基于vv-calendar的click优化版
 

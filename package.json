@@ -1,7 +1,7 @@
 {
   "name": "vv-calendar-click",
   "description": "base vv-calendar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "",
   "license": "MIT",
   "main": "./src/components/calendar/index.js",
