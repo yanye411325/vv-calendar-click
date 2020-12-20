@@ -24,8 +24,7 @@
           :key="
             item[Math.ceil(Math.random() * 6)].date.timeValue +
               'week' +
-              Math.random() * 10
-          "
+              Math.random() * 10"
           class="swiper-slide line-week"
 
         >
@@ -135,7 +134,6 @@
 </template>
 
 <script>
-// console.log($('.swiper-slide-selected').height())
 import Swiper from '../swiper/Swiper'
 import moment from 'moment'
 export default {
@@ -210,11 +208,11 @@ export default {
     hanldeChange() {
       this.isUp = !this.isUp
       if (this.isUp) {
-        this.initMonthFun()
         this.isShowAllMonth = true
+        this.initMonthFun()
       } else {
-        this.initWeekFun()
         this.isShowAllMonth = false
+        this.initWeekFun()
       }
     },
     initWeekList(lastWeek, centerWeek, nextWeek) {
@@ -242,17 +240,20 @@ export default {
       const currentMonthLastDayOfWeekday = moment(date)
         .date(currentMonthDays)
         .format('E')
+        
       let dateArray = []
       const currentMonthArray = []
       const lastMonthArray = []
       const nextMonthArray = []
-      const lastMonthRenderCount = currentMonthFirstDayOfWeekday
-      const nextMonthRenderCount = 6 - currentMonthLastDayOfWeekday
+
+      const lastMonthRenderCount = currentMonthFirstDayOfWeekday < 7 ? currentMonthFirstDayOfWeekday : 0
+      const nextMonthRenderCount = currentMonthLastDayOfWeekday < 7 ? Math.abs(6 - currentMonthLastDayOfWeekday) : 6
       for (let i = 0; i < lastMonthRenderCount; i++) {
         const day = moment(date)
           .date(1)
-          .subtract(lastMonthRenderCount - i + 1, 'days')
+          .subtract(lastMonthRenderCount - i, 'days')
           .format('YYYY-MM-DD')
+          
         const dayName = moment(day).format('D')
         const map = {
           dayName: dayName,
@@ -299,19 +300,22 @@ export default {
       dateArray = [...lastMonthArray, ...currentMonthArray, ...nextMonthArray]
       return dateArray
     },
+    
 
     getCurrentWeek(date) {
       moment.locales('zh-cn')
       const weekOfday = moment(date).format('E')
-      const numberToMonday = weekOfday // 4
-      const numberToSunday = 6 - weekOfday // 2
+      const numberToMonday = weekOfday < 7 ? weekOfday : 0
+      const numberToSunday = weekOfday < 7 ? Math.abs(6 - weekOfday) : 6
       let weekArray = []
       const firstArray = []
       const lastArray = []
       for (let i = 1; i <= numberToMonday; i++) {
         const day = moment(date)
+          // note
           .subtract(weekOfday - i + 1, 'days')
           .format('YYYY-MM-DD')
+          
         const dayName = moment(day).format('D')
         const map = {
           dayName: dayName,
@@ -347,6 +351,7 @@ export default {
         },
         select: false
       }
+
       weekArray = [...firstArray, dateMap, ...lastArray]
       return weekArray
     },
@@ -371,10 +376,9 @@ export default {
           this.initWeekFun()
           this.$emit('input', moment(this.currentMoment).format("YYYY-MM-DD"))
         } else {
-          this.currentMoment = moment(this.currentMoment).add(1, 'month')
+          this.currentMoment = moment(this.currentMoment).add(1, 'month').date(1)
           this.initMonthFun()
-          this.currentMoment = moment(this.currentMoment).date(1)
-          this.$emit('input', this.currentMoment.format("YYYY-MM-DD"))
+          this.$emit('input', this.currentMoment.format('YYYY-MM-DD'))
         }
       } else if (e === 1) {
         if (!this.isShowAllMonth) {
@@ -382,10 +386,9 @@ export default {
           this.initWeekFun()
           this.$emit('input', moment(this.currentMoment).format("YYYY-MM-DD"))
         } else {
-          this.currentMoment = moment(this.currentMoment).subtract(1, 'month')
+          this.currentMoment = moment(this.currentMoment).subtract(1, 'month').date(1)
           this.initMonthFun()
-          this.currentMoment = moment(this.currentMoment).date(1)
-          this.$emit('input', moment(this.currentMoment).format("YYYY-MM-DD"))
+          this.$emit('input', moment(this.currentMoment.format('YYYY-MM-DD')))
         }
       }
       this.$refs.customSwiper.setPage(2)
