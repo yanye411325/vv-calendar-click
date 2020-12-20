@@ -161,6 +161,17 @@ export default {
       }
     }
   },
+  watch: {
+    value: {
+      immediate: true,
+      deep: true,
+      handler(newValue, oldValue) {
+        if(newValue) {
+          this.title = moment(newValue).format('YYYY年MM月')
+        }
+      }
+    }
+  },
   data() {
     return {
       title: '',
@@ -179,7 +190,6 @@ export default {
     }
   },
   computed: {},
-  watch: {},
   created() {
     this.currentMoment = moment().format('YYYY-MM-DD')
     this.initWeekList(
@@ -220,7 +230,6 @@ export default {
       c_S_W_List[0] = this.getCurrentWeek(lastWeek)
       c_S_W_List[1] = this.getCurrentWeek(centerWeek)
       c_S_W_List[2] = this.getCurrentWeek(nextWeek)
-      this.title = moment(this.currentMoment).format('YYYY年MM月')
       this.c_S_W_List = c_S_W_List
     },
     initMonthList(lastMonth, centerMonth, nextMonth) {
@@ -228,7 +237,6 @@ export default {
       c_S_M_List[0] = this.getCurrentMonth(lastMonth)
       c_S_M_List[1] = this.getCurrentMonth(centerMonth)
       c_S_M_List[2] = this.getCurrentMonth(nextMonth)
-      this.title = moment(this.currentMoment).format('YYYY年MM月')
       this.c_S_M_List = c_S_M_List
     },
     getCurrentMonth(date) {
