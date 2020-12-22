@@ -386,7 +386,7 @@ export default {
         } else {
           this.currentMoment = moment(this.currentMoment).add(1, 'month').date(1)
           this.initMonthFun()
-          this.$emit('input', this.currentMoment.format('YYYY-MM-DD'))
+          this.$emit('input', moment(this.currentMoment).format('YYYY-MM-DD'))
         }
       } else if (e === 1) {
         if (!this.isShowAllMonth) {
@@ -396,7 +396,7 @@ export default {
         } else {
           this.currentMoment = moment(this.currentMoment).subtract(1, 'month').date(1)
           this.initMonthFun()
-          this.$emit('input', moment(this.currentMoment.format('YYYY-MM-DD')))
+          this.$emit('input', moment(this.currentMoment).format('YYYY-MM-DD'))
         }
       }
       this.$refs.customSwiper.setPage(2)
